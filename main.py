@@ -1,6 +1,4 @@
-import os
-from dotenv import load_dotenv
-
+import argparse
 from telegram.ext import Application, CommandHandler, ConversationHandler, MessageHandler, filters, CallbackQueryHandler
 from datetime import datetime, timedelta
 from telegram import Update, InlineKeyboardButton, InlineKeyboardMarkup
@@ -8,7 +6,6 @@ import pytz
 import logging
 from telegram.ext import JobQueue
 
-load_dotenv()
 
 logging.basicConfig(
     format='%(asctime)s - %(name)s - %(levelname)s - %(message)s',
@@ -250,9 +247,13 @@ async def send_reminder(context):
     )
 
 def main():
+    parser = argparse.ArgumentParser(description='Telegram Bot')
+    parser.add_argument('--token', required=True, help='Telegram Bot Token')
+    args = parser.parse_args()
+
     application = (
         Application.builder()
-        .token(os.getenv('BOT_TOKEN'))
+        .token(args.token)  # Use the token from command line arguments
         .build()
     )
 
