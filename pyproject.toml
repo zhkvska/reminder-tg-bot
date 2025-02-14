@@ -1,0 +1,11 @@
+[tool.poetry]
+name = "telegram-bot"
+version = "0.1.0"
+description = "Telegram Bot"
+python = "3.10.12"
+
+[tool.poetry.dependencies]
+python = "^3.10.12"
+python-telegram-bot = "*"
+python-dotenv = "*"
+pytz = "*"
