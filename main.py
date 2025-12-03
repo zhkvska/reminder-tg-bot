@@ -258,9 +258,9 @@ async def add_message_delay(update, context):
             "delay_minutes": delay,
         }
 
-        if len(user_data["messages"]) >= 5:
+        if len(user_data["messages"]) >= 10:
             await update.message.reply_text(
-                "You've reached the maximum limit of 5 messages. "
+                "You've reached the maximum limit of 10 messages. "
                 "Please delete some messages before adding new ones."
             )
             keyboard = [
